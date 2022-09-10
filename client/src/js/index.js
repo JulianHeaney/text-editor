@@ -1,10 +1,15 @@
 import { Workbox } from 'workbox-window';
 import Editor from './editor';
 import './database';
+
+import { getDB } from './database';
+
 import '../css/style.css';
 
 import Logo from '../images/logo.png';
+
 window.addEventListener('load', function() {
+  getDB();
   document.getElementById('logo').src = Logo;
 });
 
@@ -28,9 +33,7 @@ if (typeof editor === 'undefined') {
   loadSpinner();
 }
 
-// Check if service workers are supported
 if ('serviceWorker' in navigator) {
-  // register workbox service worker
   const workboxSW = new Workbox('/src-sw.js');
   workboxSW.register();
 } else {

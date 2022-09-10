@@ -5,10 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start:dev": "concurrently \"cd server && npm run server\" \"client && npm run dev\"",
-    "start": "cd server && node server.js",
+    "start": "npm run build && cd server && node server.js",
     "server": "cd server nodemon server.js --ignore client",
     "build": "cd client && npm run build",
-    "install": "concurrently \"cd client && npmm install\" \"cd server && npm install\"",
+    "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
     "client": "cd client && npm start"
   },
   "keywords": [],
@@ -21,6 +21,9 @@
   "devDependencies": {
     "concurrently": "^5.2.0",
     "nodemon": "^2.0.4"
+  },
+  "engines": {
+    "node": "16.15.1"
   },
   "repository": {
     "type": "git",
